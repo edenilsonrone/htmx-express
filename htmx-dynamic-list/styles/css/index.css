@@ -1,0 +1,120 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap");
+.task-input {
+  border: 0;
+  width: 100%;
+  padding: 9px 13px;
+  outline: none;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.482);
+}
+.task-input::-moz-placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+.task-input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+.task-input:focus {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.add-task-button {
+  padding: 5px 12px;
+  background-color: rgb(149, 0, 149);
+  color: rgba(255, 255, 255, 0.7);
+  transition: border-color 200ms ease;
+  transition: box-shadow 200ms ease;
+  border-radius: 5px;
+  font-weight: 600;
+  border: 1px solid transparent;
+}
+.add-task-button:hover {
+  cursor: pointer;
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 30px rgb(149, 0, 149);
+}
+.add-task-button:active {
+  transform: translateY(1px);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Nunito Sans", sans-serif;
+  box-sizing: border-box;
+  text-decoration: none;
+  color: white;
+  list-style: none;
+}
+
+body,
+html {
+  min-height: 100vh;
+  background-color: #1E1E1E;
+}
+
+section {
+  padding: 30px;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+section .list-container {
+  max-width: 450px;
+  width: 100%;
+}
+section form {
+  display: flex;
+  gap: 15px;
+}
+section ul {
+  padding-top: 10px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+section ul li {
+  transition: 200ms ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 5px;
+  padding: 6px;
+}
+section ul li:hover {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+section ul li button {
+  border: 0;
+  border-radius: 5px;
+  padding: 5px 8px;
+  background-color: rgba(255, 255, 255, 0.15);
+}
+section ul li button:hover {
+  cursor: pointer;
+  background-color: rgba(213, 43, 36, 0.15);
+}
+section ul li button:hover i {
+  color: #D52B24;
+}
+section ul li p {
+  flex: 1;
+  text-overflow: ellipsis;
+  font-size: 0.938rem;
+  text-wrap: nowrap;
+  overflow: hidden;
+}
+
+@media (width <= 400px) {
+  section {
+    padding: 20px;
+    align-items: flex-start;
+  }
+  section form {
+    flex-direction: column;
+  }
+}/*# sourceMappingURL=index.css.map */

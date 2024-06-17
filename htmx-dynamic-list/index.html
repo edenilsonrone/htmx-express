@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="./styles/css/index.css">
+   <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+   <script src="//unpkg.com/alpinejs" defer></script>
+   <script src="https://kit.fontawesome.com/d7647bb46f.js" crossorigin="anonymous"></script>
+   <script src="./index.js" defer></script>
+   <base href="http://localhost:3000/">
+   <title>Lista de Tarefas</title>
+</head>
+
+<body>
+   <main>
+      <section>
+         <div class="list-container">
+            <form id="add-task-form" hx-post="/tasks" hx-trigger="submit" hx-on="htmx:afterRequest: loadTasks()"
+               hx-swap="none">
+               <input class="task-input" type="text" name="title" placeholder="Adicionar tarefa" required>
+               <button class="add-task-button" type="submit">Adicionar</button>
+            </form>
+
+            <ul id="task-list">
+            </ul>
+
+            <script type="text/template" id="task-template">
+                 <li title="{title}" id="task-{id}">
+                     <input type="checkbox" hx-patch="/tasks/{id}" hx-vals='{"finished": {finished}}' hx-swap="outerHTML" {checked}>
+                     <p>{title}</p>
+                     <button class="delete-button" hx-delete="/tasks/{id}" hx-confirm="Tem certeza que deseja remover esta tarefa?" hx-swap="delete">
+                        <i class="fa-regular fa-trash-can"></i>
+                     </button>
+                 </li>
+             </script>
+         </div>
+      </section>
+   </main>
+
+   <script>
+      const loadTasks = () => {
+         fetch('/tasks')
+            .then(response => response.json())
+            .then(tasks => {
+               const taskList = document.getElementById('task-list');
+               taskList.innerHTML = tasks.map(task => renderTask(task)).join('');
+               htmx.process(taskList);
+            })
+      }
+
+      const renderTask = (task) => {
+         const template = document.getElementById('task-template').innerHTML;
+         return template
+            .replace(/{id}/g, task.id)
+            .replace(/{title}/g, task.title)
+            .replace(/{finished}/g, task.finished)
+            .replace('{checked}', task.finished ? 'checked' : '');
+      }
+
+      loadTasks()
+      document.addEventListener('htmx:afterRequest', loadTasks)
+   </script>
+</body>
+
+</html>

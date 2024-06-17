@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+@import './variables';
+@import '../components/input';
+@import '../components/button';
+
+* {
+   margin: 0;
+   padding: 0;
+   font-family: "Nunito Sans", sans-serif;
+   box-sizing: border-box;
+   text-decoration: none;
+   color: $color-tertiary;
+   list-style: none;
+}
+
+body,
+html {
+   min-height: 100vh;
+   background-color: $color-secondary;
+}
+
+section {
+   padding: 30px;
+   min-height: 100vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+
+   .list-container {
+      max-width: 450px;
+      width: 100%;
+   }
+
+   form {
+      display: flex;
+      gap: 15px;
+   }
+
+   ul {
+      padding-top: 10px;
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      border-top: 1px solid transparentize($color: $color-tertiary, $amount: 0.9);
+
+      li {
+         transition: 200ms ease;
+         display: flex;
+         align-items: center;
+         gap: 10px;
+         border-radius: 5px;
+         padding: 6px;
+
+         &:hover {
+            background-color: transparentize($color: $color-tertiary, $amount: 0.97)
+         }
+
+         button {
+            border: 0;
+            border-radius: 5px;
+            padding: 5px 8px;
+            background-color: transparentize($color: $color-tertiary, $amount: 0.85);
+            
+            &:hover {
+               cursor: pointer;
+               background-color: transparentize($color: $color-warn, $amount: 0.85);
+               
+               i {
+                  color: $color-warn;
+               }
+            }
+         }
+
+         p {
+            flex: 1;
+            text-overflow: ellipsis;
+            font-size: $text-base;
+            text-wrap: nowrap;
+            overflow: hidden;
+         }
+      }
+   }
+}
+
+@media (width <= 400px) {
+   section {
+      padding: 20px;
+      align-items: flex-start;
+
+      form {
+         flex-direction: column;
+      }
+   }
+}

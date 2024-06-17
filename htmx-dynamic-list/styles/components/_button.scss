@@ -1,0 +1,22 @@
+@import '../scss/variables';
+
+.add-task-button {
+   padding: 5px 12px;
+   background-color: $color-primary;
+   color: transparentize($color: $color-tertiary, $amount: 0.3);
+   transition: border-color 200ms ease;
+   transition: box-shadow 200ms ease;
+   border-radius: 5px;
+   font-weight: 600;
+   border: 1px solid transparent;
+
+   &:hover {
+      cursor: pointer;
+      border-color: transparentize($color: $color-tertiary, $amount: 0.6);
+      box-shadow: 0 0 30px $color-primary;
+   }
+
+   &:active {
+      transform: translateY(1px);
+   }
+}
